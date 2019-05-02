@@ -13,10 +13,8 @@ pip3 install --upgrade pip
 # Install python required libs
 pip3 install -r requirements.txt
 
-# Install nltk libs 
-python3
-nltk.download('stopwords')
-nltk.download('punkt')
-exit()
+# Install nltk libs
+python3 download_libs.py
 
+# Run the main script
 python3 relevance.py
