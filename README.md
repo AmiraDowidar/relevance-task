@@ -13,5 +13,7 @@ python 3.7.3
 
 ### if problem occured with python for matplotlib (Mac OSX)
 
+```
 touch ~/.matplotlib/matplotlibrc
 echo "backend: TkAgg" >> ~/.matplotlib/matplotlibrc
+```
