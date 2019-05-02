@@ -17,6 +17,14 @@ relevant_words = ['institutional', 'industerial', 'commercial', 'retail', 'mixed
 irrelevant_words = ['condo','studios', 'residential', 'small', 'medium', 'legalize', 'administrative']
 relevant_type = 'PRJ'
 
+relevant_type_weight = 10
+irrelevant_type_weight = 100
+relevant_words_weight = 10
+irrelevant_words_weight = 10
+size_weight = 20
+duration_weight = 10
+
+
 # with numeric values
 project_duration = ['months', 'month', 'days', 'day']
 project_size_sf = ['sf', 'gsf', 'squarefeet', 'square foot', 'square-foot']
@@ -48,18 +56,18 @@ def getScore(filtered_description, type):
     # increase score for projects with relevant type
     # and decrease score for projects with irrelevant type
     if type == relevant_type:
-        score+=10
+        score+=relevant_type_weight
     else:
-        score-=100
+        score-=irrelevant_type_weight
 
     
     # get word count for relevant words and increase their score
     relevant_count = { word: filtered_description.count(word) for word in relevant_words }
-    score+=sum(relevant_count.values())*10
+    score+=sum(relevant_count.values())*relevant_words_weight
 
     # get word count for irrelevant words and decrease their score
     irrelevant_count = { word: filtered_description.count(word) for word in irrelevant_words }
-    score-=sum(irrelevant_count.values())*10
+    score-=sum(irrelevant_count.values())*irrelevant_words_weight
 
     # use regex to get approximate square feet
     # and increase score if relevant
@@ -68,14 +76,14 @@ def getScore(filtered_description, type):
         p = re.compile(r'\d+ ')
         result = p.findall(' '.join(filtered_description))
         # result = re.search(r"(?=("+'|'.join(project_size_sf)+r"))", ' '.join(filtered_description))
-        score+=len(result)*20
+        score+=len(result)*size_weight
 
     # use regex to get duration
     if any(e in filtered_description  for e in project_duration):
         p = re.compile(r'\d+ ')
         result = p.findall(' '.join(filtered_description))
         # result = re.search(r"(?=("+'|'.join(size_sf)+r"))", ' '.join(filtered_description))
-        score+=len(result)*10
+        score+=len(result)*duration_weight
 
 
 
