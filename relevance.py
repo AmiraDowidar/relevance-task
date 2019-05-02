@@ -38,7 +38,7 @@ data = pd.read_excel (r'city_notes.xlsx', 'filtered')
 df = pd.DataFrame(data, columns= ['OBJECTID','record_type_category','description'])
 
 ## ================ Filter data =======================##
-# Remove null description rows as they 
+# Remove null description rows as they are irrelevant
 df = df[df['description'].notnull()]
 # Remove redundant data
 df = df.drop_duplicates(subset='OBJECTID', keep='first')
@@ -123,7 +123,7 @@ print(sorted_df)
 # Save data to excel sheet
 sorted_df.to_excel('data.xlsx', sheet_name='processed', index=False)
 
-# Chart to visualize data
+# Chart to visualize data with score > 150
 sorted_df = sorted_df[sorted_df['score'] > 150]
 df_chart = sorted_df.plot.bar(x='OBJECTID', y='score', rot=0)
 plt.show()
