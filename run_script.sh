@@ -4,6 +4,7 @@
 # https://docs.python.org/3/library/venv.html
 python -m venv task-env
 
+# Activate the venv
 . task-env/bin/activate
 
 # Upgrade Python pip
@@ -15,6 +16,6 @@ pip install -r requirements.txt
 # python
 # nltk.download('stopwords')
 # nltk.download('punkt')
-#exit()
+# exit()
 
 python relevance.py

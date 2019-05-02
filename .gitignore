@@ -1,5 +1,6 @@
 # data file
 city_notes.xlsx
+data.xlsx
 
 # env files and libs
 include/*
