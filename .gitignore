@@ -1,0 +1,9 @@
+# data file
+city_notes.xlsx
+
+# env files and libs
+include/*
+task-env/*
+
+# vscode files
+.vscode/*
