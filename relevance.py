@@ -68,7 +68,7 @@ def getScore(filtered_description, type):
         p = re.compile(r'\d+ ')
         result = p.findall(' '.join(filtered_description))
         # result = re.search(r"(?=("+'|'.join(project_size_sf)+r"))", ' '.join(filtered_description))
-        score+=len(result)*10
+        score+=len(result)*20
 
     # use regex to get duration
     if any(e in filtered_description  for e in project_duration):
