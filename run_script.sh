@@ -2,21 +2,21 @@
 
 # Create virtual env
 # https://docs.python.org/3/library/venv.html
-python -m venv venv
+python3 -m venv venv
 
 # Activate the venv
 . venv/bin/activate
 
 # Upgrade Python pip
-pip install --upgrade pip
+pip3 install --upgrade pip
 
 # Install python required libs
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
 # Install nltk libs 
-python
+python3
 nltk.download('stopwords')
 nltk.download('punkt')
 exit()
 
-python relevance.py
+python3 relevance.py
